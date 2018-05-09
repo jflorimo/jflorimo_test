@@ -1,0 +1,5 @@
+DB_NAME=jflorimodb
+DB_USER=admin
+DB_PASS=pwd
+DB_SERVICE=postgres
+DB_PORT=5432

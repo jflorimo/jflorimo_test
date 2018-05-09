@@ -1,0 +1,22 @@
+web:
+  restart: always
+  build: ./web/
+  ports:
+    - "80:80"
+  links:
+    - postgres:postgres
+  env_file: env
+  volumes:
+    - ./web:/data/web
+  command: /usr/bin/gunicorn app.wsgi:application -w 2 -b :80
+
+postgres:
+  restart: always
+  image: postgres:latest
+  volumes:
+    - ./postgres/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    - ./backups/postgresql:/backup
+  env_file:
+    - env
+  expose:
+    - "5432"
