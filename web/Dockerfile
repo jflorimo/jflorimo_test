@@ -16,5 +16,5 @@ RUN pip3 install -r requirements.txt
 RUN apk del -r python3-dev postgresql
 
 # Prepare
-COPY ./app /data/web/
+#COPY ./app /data/web/
 RUN mkdir -p app/static/admin

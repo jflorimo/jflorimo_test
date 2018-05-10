@@ -20,5 +20,8 @@ class Record(models.Model):
     device = models.ForeignKey(Device, on_delete=models.CASCADE)
     userDreem = models.ForeignKey(UserDreem, on_delete=models.CASCADE)
 
+    class Meta:
+        ordering = ('created',)
+
 
 
