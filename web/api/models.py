@@ -6,13 +6,10 @@ from django.db import models
 class Device(models.Model):
     name = models.CharField(max_length=100, blank=True, default='')
     created = models.DateTimeField(auto_now_add=True)
+    users = models.ManyToManyField(User, null=True)
 
     class Meta:
         ordering = ('created',)
-
-
-class UserDreem(User):
-    devices = models.ManyToManyField(Device)
 
 
 class Record(models.Model):
@@ -20,8 +17,8 @@ class Record(models.Model):
     name = models.CharField(max_length=100, blank=True, default='')
     created = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=100, blank=False, default='UNKNOWN')
-    device = models.ForeignKey(Device, on_delete=models.CASCADE)
-    userDreem = models.ForeignKey(UserDreem, on_delete=models.CASCADE)
+    device = models.ForeignKey(Device, on_delete=models.CASCADE, null=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     class Meta:
         ordering = ('created',)

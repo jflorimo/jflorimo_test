@@ -5,3 +5,4 @@ gunicorn==19.8.1
 Markdown==2.6.11
 psycopg2==2.7.4
 whitenoise==3.3.1
+django-rest-auth[with_social]

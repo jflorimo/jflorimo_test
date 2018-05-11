@@ -5,8 +5,8 @@ from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework import status
 
-from ..models import Device, UserDreem, Record
-from ..serializer import DeviceSerializer, UserDreemSerializer, RecordSerializer
+from ..models import Device, Record
+from ..serializer import DeviceSerializer, UserSerializer, RecordSerializer
 
 
 class DeviceList(APIView):
