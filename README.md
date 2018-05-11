@@ -2,8 +2,19 @@
 
 ## init
 cd /project
+
 docker-compose build
+
 docker-compose up -d
+
+## run
+
+http://localhost/
+
+## psql
+
+docker exec -it jflorimo_test_postgres_1 psql -U docker
+
 
 ## Create migrations
 docker exec -it django-api makemigrations
