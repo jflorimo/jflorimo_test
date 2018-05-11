@@ -11,9 +11,15 @@ docker-compose up -d
 
 http://localhost/
 
+## reboot web
+
+docker stop jflorimo_test_web_1; docker-compose up -d; docker logs jflorimo_test_web_1 -f
+
 ## psql
 
 docker exec -it jflorimo_test_postgres_1 psql -U docker
+
+docker=# \c jflorimodb
 
 
 ## Create migrations
