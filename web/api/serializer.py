@@ -16,7 +16,7 @@ class DeviceSerializer(serializers.ModelSerializer):
 class UserDeviceSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserDevice
-        fields = ('owner', 'device', 'created', 'devices')
+        fields = ('device', 'owner', 'created')
 
 class RecordSerializer(serializers.ModelSerializer):
     class Meta:

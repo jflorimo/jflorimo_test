@@ -27,13 +27,13 @@ class UserDeviceDetail(APIView):
 
     def get_object(self, pk):
         try:
-            return UserDevice.objects.get(pk=pk)
+            return UserDevice.objects.filter(owner=pk).first()
         except UserDevice.DoesNotExist:
             raise Http404
 
     def get(self, request, pk, format=None):
-        device = self.get_object(pk)
-        serializer = UserDeviceSerializer(device)
+        device = UserDevice.objects.filter(owner=pk).all()
+        serializer = UserDeviceSerializer(device, many=True)
         return Response(serializer.data)
 
     def put(self, request, pk, format=None):
