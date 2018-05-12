@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="robots" content="NONE,NOARCHIVE"/>
-    <title>Device List – Django REST framework</title>
+    <title>UPLOAD RECORD</title>
     <link rel="stylesheet" type="text/css" href="/static/rest_framework/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="/static/rest_framework/css/bootstrap-tweaks.css"/>
     <link rel="stylesheet" type="text/css" href="/static/rest_framework/css/prettify.css"/>
@@ -27,53 +27,42 @@
             </ul>
         </div>
     </div>
-
     <div class="container">
         <ul class="breadcrumb">
             <li><a href="/">Home</a></li>
         </ul>
-        <!-- Content -->
-        <div id="content" role="main" aria-label="content">
-            <h4>AUTH</h4>
-            <ul>
-                <li><a href="/user/">REGISTER</a></li>
-                <li><a href="/device/">LOGIN</a></li>
-            </ul>
 
-            <h4>USER</h4>
-            <ul>
-                <li><a href="/user/">USERS</a></li>
-            </ul>
-
-            <h4>DEVICE</h4>
-            <ul>
-                <li><a href="/device/">DEVICES (GET, POST)</a></li>
-                <li><a href="/device/1">DEVICES (GET, PUT, DELETE)</a></li>
-            </ul>
-
-            <h4>USER DEVICE</h4>
-            <ul>
-                <li><a href="/user/device">USER DEVICE (GET, POST)</a></li>
-                <li><a href="/user/device/1">USER DEVICE BY USER_ID (GET, PUT, DELETE)</a></li>
-            </ul>
-
-            <h4>RECORD FILE</h4>
-            <ul>
-                <li><a href="/record/">RECORD FILE (GET)</a></li>
-                <li><a href="/upload/">UPLOAD (FORM, POST)</a></li>
-                <li><a href="/record/1">RECORD FILE (GET, PUT, DELETE)</a></li>
-                <li><a href="#">RECORD FILE PROCESSING OVERVIEW(GET)</a></li>
-
-            </ul>
-
-            <h4>RECORD DATA</h4>
-            <ul>
-                <li><a href="#">RECORD DATA (GET)</a></li>
-            </ul>
-
+        <div>
+            <div class="well tab-content">
+                <div id="put-generic-content-form">
+                    <form action="/upload/" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        {% csrf_token %}
+                        <fieldset>
+                            <div class="form-group">
+                                <label for="id__content_type" class="col-sm-2 control-label">File Name:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="title" maxlength="50" required id="id_title"/>
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="id__content" class="col-sm-2 control-label">File:</label>
+                                <div class="col-sm-10">
+                                    <input type="file" name="file" required id="id_file"/>
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <input class="btn btn-primary js-tooltip" title="" type="submit" value="Submit"/>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
         </div>
 
-    </div><!-- /.container -->
+
+    </div>
 </div><!-- ./wrapper -->
 
 
