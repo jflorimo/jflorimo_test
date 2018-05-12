@@ -1,10 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>JFLORIMO</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="robots" content="NONE,NOARCHIVE"/>
+    <title>Device List – Django REST framework</title>
+    <link rel="stylesheet" type="text/css" href="/static/rest_framework/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/rest_framework/css/bootstrap-tweaks.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/rest_framework/css/prettify.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/rest_framework/css/default.css"/>
 </head>
-<body>
-<h3>JFLORIMO TEST API</h3>
+
+
+<body class="">
+
+<div class="wrapper">
+    <div class="navbar navbar-static-top navbar-inverse"
+         role="navigation" aria-label="navbar">
+        <div class="container">
+            <span>
+                <a class='navbar-brand' rel="nofollow" href='http://www.django-rest-framework.org'>
+                    JFLORIMO API TEST
+                </a>
+            </span>
+            <ul class="nav navbar-nav pull-right">
+                <li class="navbar-text">jflorimo</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="/">Home</a></li>
+        </ul>
+        <!-- Content -->
+        <div id="content" role="main" aria-label="content">
+            <h4>AUTH</h4>
+            <ul>
+                <li><a href="/user/">REGISTER</a></li>
+                <li><a href="/device/">LOGIN</a></li>
+            </ul>
+
+            <h4>USER</h4>
+            <ul>
+                <li><a href="/user/">USERS</a></li>
+            </ul>
+
+            <h4>DEVICE</h4>
+            <ul>
+                <li><a href="/device/">DEVICES (GET, POST)</a></li>
+                <li><a href="/device/1">DEVICES (GET, PUT, DELETE)</a></li>
+            </ul>
+
+            <h4>USER DEVICE</h4>
+            <ul>
+                <li><a href="/user/device">USER DEVICE (GET, POST)</a></li>
+                <li><a href="/user/device/1">USER DEVICE (GET, PUT, DELETE)</a></li>
+            </ul>
+
+            <h4>RECORD FILE</h4>
+            <ul>
+                <li><a href="/record/">RECORD FILE (GET, POST)</a></li>
+                <li><a href="/record/1">RECORD FILE (GET, PUT, DELETE)</a></li>
+                <li><a href="#">RECORD FILE PROCESSING OVERVIEW(GET)</a></li>
+
+            </ul>
+
+            <h4>RECORD DATA</h4>
+            <ul>
+                <li><a href="#">RECORD DATA (GET)</a></li>
+            </ul>
+
+        </div>
+
+    </div><!-- /.container -->
+</div><!-- ./wrapper -->
+
+
+<script>
+    window.drf = {
+        csrfHeaderName: "X-CSRFTOKEN",
+        csrfCookieName: "csrftoken"
+    };
+</script>
+<script src="/static/rest_framework/js/jquery-3.3.1.min.js"></script>
+<script src="/static/rest_framework/js/ajax-form.js"></script>
+<script src="/static/rest_framework/js/csrf.js"></script>
+<script src="/static/rest_framework/js/bootstrap.min.js"></script>
+<script src="/static/rest_framework/js/prettify-min.js"></script>
+<script src="/static/rest_framework/js/default.js"></script>
+<script>
+    $(document).ready(function () {
+        $('form').ajaxForm();
+    });
+</script>
+
+
 </body>
+
 </html>

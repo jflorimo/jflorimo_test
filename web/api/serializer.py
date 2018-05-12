@@ -1,20 +1,24 @@
-from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import Device, Record
+from rest_framework import serializers
+from .models import Device, Record, UserDevice
 
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = '__all__'
 
 class DeviceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Device
         fields = ('id', 'name', 'created')
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    devices = serializers.PrimaryKeyRelatedField(many=True, queryset=Device.objects.all())
+class UserDeviceSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
-        fields = ('username', 'email', 'devices')
+        model = UserDevice
+        fields = ('owner', 'device', 'created', 'devices')
 
 class RecordSerializer(serializers.ModelSerializer):
     class Meta:
         model = Record
-        fields = ('name', 'device', 'userDreem','created')
+        fields = ('name', 'status', 'device', 'owner','created')
