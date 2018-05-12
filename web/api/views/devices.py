@@ -1,4 +1,6 @@
 from rest_framework.response import Response
+
+
 from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework import status
@@ -48,8 +50,6 @@ class DeviceDetail(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
-        print(pk)
         device = self.get_object(pk)
-        print(device.__str__())
         device.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

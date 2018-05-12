@@ -1,6 +1,6 @@
 from django.conf.urls import url, include
 from rest_framework.urlpatterns import format_suffix_patterns
-from .views import devices, home, users, user_devices, upload
+from .views import devices, home, users, user_devices, upload, records
 
 urlpatterns = [
     # USER
@@ -13,6 +13,8 @@ urlpatterns = [
     url(r'^device/?$', devices.DeviceList.as_view()),
     url(r'^device/(?P<pk>[0-9]+)$', devices.DeviceDetail.as_view()),
     # RECORD
+    url(r'^record/?$', records.RecordList.as_view()),
+    url(r'^record/(?P<pk>[0-9]+)$', records.RecordDetail.as_view()),
     # UPLOAD
     url(r'^upload/?$', upload.Upload.as_view()),
     # AUTH

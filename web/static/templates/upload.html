@@ -39,14 +39,32 @@
                         {% csrf_token %}
                         <fieldset>
                             <div class="form-group">
-                                <label for="id__content_type" class="col-sm-2 control-label">File Name:</label>
+                                <label for="id__content_type" class="col-sm-2 control-label">file_name:</label>
                                 <div class="col-sm-10">
                                     <input type="text" name="title" maxlength="50" required id="id_title"/>
                                     <span class="help-block"></span>
                                 </div>
                             </div>
+
                             <div class="form-group">
-                                <label for="id__content" class="col-sm-2 control-label">File:</label>
+                                <label for="id__content_type" class="col-sm-2 control-label">user_id:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="user_id" maxlength="50" required id="id_user_id"/>
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id__content_type" class="col-sm-2 control-label">device_id:</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="device_id" maxlength="50" required id="device_id"/>
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="id__content" class="col-sm-2 control-label">file:</label>
                                 <div class="col-sm-10">
                                     <input type="file" name="file" required id="id_file"/>
                                     <span class="help-block"></span>

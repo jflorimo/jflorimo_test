@@ -111,6 +111,11 @@ else:
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
+ALLAUTH = {
+    'ACCOUNT_EMAIL_VERIFICATION': 'none',
+    'ACCOUNT_USERNAME_REQUIRED': True,
+}
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',

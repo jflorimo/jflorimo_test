@@ -11,14 +11,14 @@ class UserSerializer(serializers.ModelSerializer):
 class DeviceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Device
-        fields = ('id', 'name', 'created')
+        fields = '__all__'
 
 class UserDeviceSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserDevice
-        fields = ('device', 'owner', 'created')
+        fields = '__all__'
 
 class RecordSerializer(serializers.ModelSerializer):
     class Meta:
         model = Record
-        fields = ('name', 'status', 'device', 'owner','created')
+        fields = '__all__'

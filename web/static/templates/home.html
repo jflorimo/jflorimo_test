@@ -23,7 +23,7 @@
                 </a>
             </span>
             <ul class="nav navbar-nav pull-right">
-                <li class="navbar-text">jflorimo</li>
+                <li class="navbar-text">{{ user.get_username }}</li>
             </ul>
         </div>
     </div>
@@ -36,8 +36,9 @@
         <div id="content" role="main" aria-label="content">
             <h4>AUTH</h4>
             <ul>
-                <li><a href="/user/">REGISTER</a></li>
-                <li><a href="/device/">LOGIN</a></li>
+                <li><a href="/auth/registration/">REGISTER</a></li>
+                <li><a href="/auth/login/">LOGIN</a></li>
+                <li><a href="/auth/logout/">LOGOUT</a></li>
             </ul>
 
             <h4>USER</h4>
