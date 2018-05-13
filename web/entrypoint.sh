@@ -1,2 +1,4 @@
 #!/bin/env bash
-python3 manage.py collectstatic
+python manage.py migrate
+nohup python /data/web/manage.py process_tasks --log-std &
+gunicorn app.wsgi:application -w 2 -b :80

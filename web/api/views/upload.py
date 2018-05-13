@@ -1,3 +1,5 @@
+import h5py
+
 from django.http import HttpResponseRedirect
 from django import forms
 from django.views.decorators.csrf import csrf_exempt
@@ -46,13 +48,19 @@ class Upload(APIView):
     @staticmethod
     def handle_uploaded_file(title, file, user, device):
         path = '/data/web/storage/'+title
-        Record.objects.create(name=title, path=path, device=device, owner=user, status=Record.STATUS.UPLOADING)
+        record = Record.objects.create(name=title, path=path, device=device, owner=user, status=Record.STATUS.UPLOADING)
         with open(path, 'wb+') as destination:
             for chunk in file.chunks():
                 destination.write(chunk)
+        print('starting parsing')
+        Upload.parse_file(record.id)
 
+
+    @staticmethod
     @background(queue='parsing_queue')
-    def parse_file(self, file):
-        pass
+    def parse_file(record_id):
+        record = Record.objects.get(pk=record_id)
+        record.status = Record.STATUS.PARSING
+        record.save()
 
 

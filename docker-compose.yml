@@ -8,7 +8,7 @@ web:
   env_file: env
   volumes:
     - ./web:/data/web
-  command: gunicorn app.wsgi:application -w 2 -b :80
+  command: sh /data/web/entrypoint.sh
 
 postgres:
   restart: always
