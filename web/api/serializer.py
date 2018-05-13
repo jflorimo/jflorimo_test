@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import Device, Record, UserDevice
+from .models import Device, Record, UserDevice, RecordData
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -22,3 +22,8 @@ class RecordSerializer(serializers.ModelSerializer):
     class Meta:
         model = Record
         fields = '__all__'
+
+class RecordDataSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RecordData
+        fields = ('id', 'record', 'chanel')

@@ -36,3 +36,8 @@ class Record(models.Model):
 
     class Meta:
         ordering = ('created',)
+
+class RecordData(models.Model):
+    record = models.ForeignKey(Record, on_delete=models.CASCADE, null=True)
+    chanel = models.CharField(max_length=100, blank=True, default='')
+
