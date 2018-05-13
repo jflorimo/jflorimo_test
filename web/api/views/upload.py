@@ -5,6 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.renderers import TemplateHTMLRenderer
 from django.http import Http404
+from background_task import background
 
 from ..models import Device, Record
 from django.contrib.auth.models import User
@@ -50,5 +51,8 @@ class Upload(APIView):
             for chunk in file.chunks():
                 destination.write(chunk)
 
-    # def parse_file(self, file):
-        
+    @background(queue='parsing_queue')
+    def parse_file(self, file):
+        pass
+
+

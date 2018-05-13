@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'rest_auth.registration',
+    'background_task',
 ]
 
 SITE_ID = 1
@@ -160,3 +161,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 25
 }
+
+
+# QUEUE MANAGER
+BACKGROUND_TASK_RUN_ASYNC = True
