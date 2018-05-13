@@ -1,5 +1,4 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
 from django import forms
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.views import APIView
@@ -8,7 +7,6 @@ from rest_framework.renderers import TemplateHTMLRenderer
 from django.http import Http404
 
 from ..models import Device, Record
-from ..serializer import RecordSerializer
 from django.contrib.auth.models import User
 
 
@@ -33,23 +31,24 @@ class Upload(APIView):
             title = request.POST['title']
 
             try:
-                Device.objects.get(pk=device_id)
-                User.objects.get(pk=user_id)
+                device = Device.objects.get(pk=device_id)
+                user = User.objects.get(pk=user_id)
             except Device.DoesNotExist:
                 raise Http404
             except User.DoesNotExist:
                 raise Http404
 
-            self.handle_uploaded_file(title, request.FILES['file'], user_id, device_id)
+            self.handle_uploaded_file(title, request.FILES['file'], user, device)
             return HttpResponseRedirect('/record/')
-        return Response(template_name='upload.html')
+        return Response({'file': 'uploaded'}, template_name='upload.html')
 
     @staticmethod
-    def handle_uploaded_file(title, file, user_id, device_id):
+    def handle_uploaded_file(title, file, user, device):
         path = '/data/web/storage/'+title
-        record = RecordSerializer(device_id=device_id, user_id=user_id, name=title, path=path)
-        record.save()
-
+        Record.objects.create(name=title, path=path, device=device, owner=user, status=Record.STATUS.UPLOADING)
         with open(path, 'wb+') as destination:
             for chunk in file.chunks():
                 destination.write(chunk)
+
+    # def parse_file(self, file):
+        
