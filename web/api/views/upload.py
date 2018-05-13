@@ -1,4 +1,5 @@
 import h5py
+from h5py import Dataset
 
 from django.http import HttpResponseRedirect
 from django import forms
@@ -62,5 +63,27 @@ class Upload(APIView):
         record = Record.objects.get(pk=record_id)
         record.status = Record.STATUS.PARSING
         record.save()
+
+
+
+        filename = record.path
+        f = h5py.File(filename, 'r')
+
+        print("==============\n")
+
+        def find_keys(value):
+            finded_keys = {}
+
+            for key in list(value.keys()):
+                if isinstance(value[key], Dataset):
+                    finded_keys[key] = None
+                    # For Values in a list:
+                    # finded_keys[key] = list(value[key].value)
+                else:
+                    finded_keys[key] = find_keys(value[key])
+
+            return finded_keys
+
+        print(find_keys(f))
 
 

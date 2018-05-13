@@ -33,7 +33,11 @@
         </ul>
 
         <div>
-           DOWNLOAD
+            <ul>
+                {% for file in file_dict %}
+                    <li><a href="{{file}}">{{ file }}</a></li>
+                {% endfor %}
+            </ul>
         </div>
 
 
